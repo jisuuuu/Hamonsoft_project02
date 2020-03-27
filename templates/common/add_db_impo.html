@@ -1,0 +1,51 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    (function($) {
+
+    $.fn.enquiryFormSubmission = function(options ) {
+
+         // Establish our default settings
+        var settings = $.extend({
+             name:'name',
+             email:'email',
+             message:'message',
+             form:this,
+             companyId:null
+        }, options);
+
+        this.find('input[type="submit"],button[type="submit"] ').click(function(event){
+            event.preventDefault();
+            console.log(settings);
+
+            $.ajax({
+                 type : 'POST',
+                 url : '127.0.0.1/anuragform.php',
+                 data : $('#form').serialize() + "&par1=1&par2=2&par3=232"
+            })
+        });
+    }
+
+
+
+}(jQuery));
+</script>
+<div class="container">
+    <h1>추가 페이지</h1>
+    <a href="{% url 'project_2' %}"}><button type="button" class="btn btn-dark slidebottomleft">home</button></a>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+
+        <div class="form-group">
+              <label class="col-md-12 control-label" for="submit"></label>
+              <div class="col-md-12">
+                <button id="submit" name="submit" type="submit" class="btn btn-success">Submit</button>
+                <button id="reset" name="reset" type="reset" class="btn btn-danger">Reset</button>
+              </div>
+        </div>
+    </form>
+</div>

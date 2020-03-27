@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<style>
+		.btn{
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  transition: all .5s;
+}
+/* //// Default effect: Slide from Top  //// */
+.btn:before,
+.btn:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: -1;
+  transition: all .5s;
+}
+.btn:hover{
+	color: white;
+}
+.btn:hover:after{
+  transform: translate3D(0,0,0);
+  transition: all .5s;
+}
+.btn-primary:before{
+  background: #007bff; /* button default background color */
+}
+.btn-primary:after{
+  background: #0000005a;
+}
+.btn-primary:hover{
+  background: #025ec1;
+}
+.btn-secondary:before{
+  background: #6c757d;
+  z-index: -2;
+}
+.btn-secondary:after{
+  background: #5a6268;
+}
+.btn-secondary:hover{
+  background: #5a6268;
+}
+.btn-success:before{
+  background: #28a745;
+  z-index: -2;
+}
+.btn-success:after{
+  background: #218838;
+}
+.btn-success:hover{
+  background: #218838;
+}
+.btn-danger:before{
+  background: #dc3545;
+}
+.btn-danger:after{
+  background: #c82333;
+}
+.btn-danger:hover{
+  background: #c82333;
+}
+.btn-warning:before{
+  background: #ffc107;
+}
+.btn-warning:after{
+  background: #e0a800;
+}
+.btn-warning:hover{
+  background: #e0a800;
+}
+.btn-info:before{
+  background: #17a2b8;
+}
+.btn-info:after{
+  background: #138496;
+}
+.btn-info:hover{
+  background: #138496;
+}
+.btn-light:before{
+  background: #f8f9fa;
+}
+.btn-light:after{
+  background: #e2e6ea;
+  color:#212529;
+}
+.btn-light:hover{
+  background: #e2e6ea;
+  color:#212529;
+}
+.btn-dark:before{
+  background: #6c757d;
+}
+.btn-dark:after{
+  background: #23272b;
+}
+.btn-dark:hover{
+  background: #23272b;
+}
+.btn-link:hover{
+  color: #007bff;
+}
+/* //// Outline Buttons  //// */
+.btn-outline-primary:after{
+  background: #007bff;
+}
+.btn-outline-primary:hover{
+  background: #007bff;
+}
+.btn-outline-secondary:after{
+  background: #6c757d;
+}
+.btn-outline-secondary:hover{
+  background: #6c757d;
+}
+.btn-outline-success:after{
+  background: #28a745;
+}
+.btn-outline-success:hover{
+  background: #28a745;
+}
+.btn-outline-danger:after{
+  background: #dc3545;
+}
+.btn-outline-danger:hover{
+  background: #dc3545;
+}
+.btn-outline-warning:after{
+  background: #ffc107;
+}
+.btn-outline-warning:hover{
+  background: #ffc107;
+}
+.btn-outline-info:after{
+  background: #17a2b8;
+}
+.btn-outline-info:hover{
+  background: #17a2b8;
+}
+.btn-outline-light{
+  color:#212529;
+}
+.btn-outline-light:after{
+  background: #e2e6ea;
+  color:#212529;
+}
+.btn-outline-light:hover{
+  background: #e2e6ea;
+  color:#212529;
+}
+.btn-outline-dark:after{
+  background: #343a40;
+}
+.btn-outline-dark:hover{
+  background: #343a40;
+}
+/* //// Slide Left  //// */
+
+.slideright:after{
+  top: 0;
+  z-index: -1;
+  transform: translate3D(-101%,0,0);
+}
+
+.slideright:hover:after{
+  transform: translate3D(0,0,0);
+  transition: all .5s;
+}
+/* //// Slide Right  //// */
+
+.slideleft:after{
+  top: 0;
+  z-index: -1;
+  transform: translate3D(101%,0,0);
+}
+.slideleft:hover:after{
+  transform: translate3D(0,0,0);
+  transition: all .5s;
+}
+/* //// Slide Up  //// */
+.slideup:after{
+  top: 0;
+  z-index: -1;
+      transform: translate3D(0,100%,0); /* move elements above button so they don't appear initially */
+  transition: all .5s;/* onhover background color */
+}
+
+.slideup:hover:after{
+  transform: translate3D(0,0,0);
+  transition: all .5s;
+}
+/* //// Slide Down  //// */
+.slidedown:after{
+  top: 0;
+  z-index: -1;
+      transform: translate3D(0,-100%,0); /* move elements above button so they don't appear initially */
+  transition: all .5s;/* onhover background color */
+}
+
+.slidedown:hover:after{
+  transform: translate3D(0,0,0);
+  transition: all .5s;
+}
+/* //// Slide Top Left //// */
+.slidetopleft:after{
+  transform: translate3D(100%,-100%,0);
+}
+.slidetopleft:hover:after{
+	transform: translate3D(0,0,0);
+  transition: all .5s;
+}
+/* //// Slide Corner Right //// */
+.slidetopright:after{
+  transform: translate3D(-100%,-100%,0);
+}
+.slidetopright:hover:after{
+	transform: translate3D(0,0,0);
+  transition: all .5s;
+}
+
+/* //// Slide Corner Left //// */
+.slidebottomleft:after{
+  transform: translate3D(100%,100%,0);
+}
+.slidebottomleft:hover:after{
+	transform: translate3D(0,0,0);
+  transition: all .5s;
+}
+/* //// Slide Corner Right //// */
+.slidebottomright:after{
+  transform: translate3D(-100%,100%,0);
+}
+.slidebottomright:hover:after{
+	transform: translate3D(0,0,0);
+  transition: all .5s;
+}
+		.view-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.thumbnail
+{
+    margin-bottom: 30px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 30px;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    border: 0;
+}
+.item.list-group-item .img-event {
+    float: left;
+    width: 30%;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+    display: inline-block;
+}
+.item.list-group-item .caption
+{
+    float: left;
+    width: 70%;
+    margin: 0;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item:after
+{
+    clear: both;
+}
+	</style>
+	<link rel="stylesheet" href="/static/css/style.css">
+	<script>
+		$(document).ready(function() {
+            	$('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
+            	$('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+
+            	$("#checkbox-container :checkbox").on("change", function(){
+                alert("The checkbox with the ID '" + this.id + "' changed");
+
+                var checked = $(this).prop('checked');
+                var temp = $(this).val();
+
+                if (checked)
+                    document.location.href = "{% url 'on' 123 %}".replace('123', temp)
+                else
+                    document.location.href = "{% url 'off' 123 %}".replace('123', temp)
+            });
+            var formValues = JSON.parse(localStorage.getItem('formValues')) || {};
+            var $checkboxes = $("#checkbox-container :checkbox");
+            var $button = $("#checkbox-container").children('#check_all');
+
+            function allChecked(){
+                return $checkboxes.length === $checkboxes.filter(":checked").length;
+            }
+
+            function updateButtonStatus(){
+                $button.text(allChecked()? "Uncheck all" : "Check all");
+            }
+
+            function handleButtonClick(){
+                $checkboxes.prop("checked", allChecked()? false : true)
+            }
+
+            function updateStorage(){
+                $checkboxes.each(function(){
+                    formValues[this.id] = this.checked;
+                });
+
+                formValues["buttonText"] = $button.text();
+                localStorage.setItem("formValues", JSON.stringify(formValues));
+            }
+
+            $button.on("click", function() {
+                handleButtonClick();
+                updateButtonStatus();
+                updateStorage();
+            });
+
+            $checkboxes.on("change", function(){
+                updateButtonStatus();
+                updateStorage();
+            });
+
+            // On page load
+            $.each(formValues, function(key, value) {
+                $("#" + key).prop('checked', value);
+            });
+
+            $button.text(formValues["buttonText"]);
+
+            $("#checkbox-container :checkbox:checked").each(function() {
+                //alert($(this).val() + " " + this.id)
+            });
+        });
+	</script>
+	<title>Hamonsoft db change system</title>
+</head>
+<!------ Include the above in your HEAD tag ---------->
+<body>
+<center><h1>HAMON SOFT DB SYSTEM</h1></center>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 my-3">
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button class="btn btn-info" id="list">
+                        List View
+                    </button>
+                    <button class="btn btn-danger" id="grid">
+                        Grid View
+                    </button>
+
+					<a href="{% url 'add' %}"><button type="button" class="btn btn-success slideright">Add</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div id="checkbox-container">
+		<button type="button" class="btn btn-primary slideup" id="check_all">Check all</button>
+    <div id="products" class="row view-group">
+		{% for list in db_impo_list %}
+                <div class="item col-xs-4 col-lg-4">
+                    <div class="thumbnail card">
+                        <div class="caption card-body">
+                            <h4 class="group card-title inner list-group-item-heading">
+                                {{list.name}}</h4>
+                            <p class="group inner list-group-item-text">
+                                {{list.idx}}</p>
+							<label class="switch">
+                        		<input type="checkbox" id="index_{{forloop.counter}}" name="check_name" value="{{list.idx}}" >
+                        		<span class="slider"></span>
+                    		</label>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p class="lead">
+                                        {{list.new_date}}</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="{% url 'edit' list.idx %}"}>Edit</a>
+                                </div>
+                            </div>
+                    </div>
+					</div>
+                </div>
+		{% endfor %}
+	</div>
+	</div>
+</div>
+</body>
+</html>
