@@ -1,0 +1,10 @@
+※sqlite Test.db의 db_list column 정보※
+
+name TEXT not null (언어 사용할 시 이름)
+db_type TEXT (oracle, mysql, mssql)
+id TEXT (사용자 아이디)
+password TEXT (사용자 비밀번호)
+host_port TEXT (DB 호스트 주소 , 만약 port 번호가 있다면 호스트:포트번호 이렇게 사용)
+database TEXT (database 이름)
+pool_cnt TEXT (ul 개발 때 사용할 풀 갯수 이건 사용 아직 안함)
+

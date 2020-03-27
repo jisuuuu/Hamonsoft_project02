@@ -1,0 +1,28 @@
+규칙
+1.<-으로 구분한다.
+2. 한 줄의 끝은 ;으로 표시한다.
+3. 대소문자 구분하여 실제 사용하고 있는 테이블의 이름을 적는다.
+4. sqlite Test.db의 db_list의 있는 DB list 중에서 '사용할 이름'<-'DB리스트 중 name' 으로 우선 DB를 연결한다.
+5. '사용할 이름'.SQL[ ] 즉, 쿼리를 사용할 때는 select문 작성하듯 띄어쓰기에 주의한다. 
+(※ 쿼리문이 길어지면 엔터후 한 칸 띄어쓰고 작성한다.)
+6. '사용할 이름'.simple 으로 시작 되면 '사용할 이름'의 DB를 사용하여 간단한 조인을 할 수 있다.
+ex)  	emp?emp.sal<=INT.1500->empno,ename,job,sal
+	emp+.dept?emp.deptno=dept.deptno
+	emp+dept?emp.deptno=dept.deptno,GB.dept.deptno.SUM.emp.sal->deptno,sum_sal
+	(GB는 group by를 뜻하며 이 후에 group by 할 기준 column 명, 그리고 표현할 연산들을 적을 수 있다.
+-> 이 후에는 저장할 column명을 작성한다.)
+7. 테이블 명만 작성하면 해당 전체 테이블이 반환된다.
+8. 모든 insert, delete, update를 사용할 때 '사용할 이름'.'테이블이나 결과값 저장한 이름'.(insert or delete or update) 와 같이 사용한다.
+9. 모든 insert, delete, update는 엔터를 지원하지 않는다.
+10. insert 를 사용할 때 column명과 value의 위치로 정확하게 매칭시켜준다. 
+11. insert(columns: ', ' 로 구분)values(values: '/ ' 로 구분);
+12. insert 할 때 간단한 쿼리를 돌려서 삽입하고 싶을 땐 사용할 column명과 쿼리를 작성한다.
+ex) A.IpAddresss.T.Q[select mng_no from cm_dev10]/ A.UniqueSystemID/ ...
+13. delete만 사용하면 전체 테이블을 삭제한다.
+14. delete where(조건: >, <, >=, <=, = 등을 띄어쓰기 없이 사용함 int이면 INT/, str이면 STR/);
+ex) target.B.delete where(SYSTEM_NM=STR/system Orange);
+15. update를 사용할 때는 where( ) 안에 조건을 작성하여 사용한다. 
+(※조건은 띄어쓰기 없이 = 이후에 STR인지 /INT 인지 구분하여 사용한다.)
+16. set( ) 안에는 변경할 값을 입력한다.
+(※변경 값도 띄어쓰기 없이 = 이후에 STR인지 /INT 인지 구분하여 사용한다.)
+ex)target.B.update where(SYSTEM_NM=STR/system Banana)set(CALL_TOTAL=INT/50);
